@@ -74,6 +74,11 @@ public class ButtonTest {
                 public AtomicReference<Button> map(ChatButton model) {
                     return new AtomicReference<>(button);
                 }
+
+                @Override
+                public AtomicReference<Button> map(MessageButton model) {
+                    return new AtomicReference<>(button);
+                }
             });
 
             assertThat(mapped.get(), is(button));
