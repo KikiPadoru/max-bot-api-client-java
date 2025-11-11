@@ -46,7 +46,8 @@ public class ButtonTest {
                 new RequestGeoLocationButton("text geo"),
                 new CallbackButton("payload", "text"),
                 new ChatButton("title", "text").startPayload("startPayload").chatDescription("description").uuid(1234),
-                new RequestContactButton("request contact"));
+                new RequestContactButton("request contact"),
+                new MessageButton("text"));
 
         for (Button button : buttons) {
             AtomicReference<Button> mapped = button.map(new FailByDefaultButtonMapper<AtomicReference<Button>>() {
