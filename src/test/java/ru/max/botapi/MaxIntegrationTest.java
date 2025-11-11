@@ -36,55 +36,7 @@ import ru.max.botapi.client.impl.OkHttpTransportClient;
 import ru.max.botapi.exceptions.APIException;
 import ru.max.botapi.exceptions.AttachmentNotReadyException;
 import ru.max.botapi.exceptions.ClientException;
-import ru.max.botapi.model.Attachment;
-import ru.max.botapi.model.AttachmentRequest;
-import ru.max.botapi.model.AudioAttachment;
-import ru.max.botapi.model.AudioAttachmentRequest;
-import ru.max.botapi.model.BotInfo;
-import ru.max.botapi.model.Button;
-import ru.max.botapi.model.CallbackButton;
-import ru.max.botapi.model.Chat;
-import ru.max.botapi.model.ChatButton;
-import ru.max.botapi.model.ChatList;
-import ru.max.botapi.model.ChatStatus;
-import ru.max.botapi.model.ChatType;
-import ru.max.botapi.model.ContactAttachment;
-import ru.max.botapi.model.ContactAttachmentRequest;
-import ru.max.botapi.model.FileAttachment;
-import ru.max.botapi.model.FileAttachmentRequest;
-import ru.max.botapi.model.InlineKeyboardAttachment;
-import ru.max.botapi.model.InlineKeyboardAttachmentRequest;
-import ru.max.botapi.model.Intent;
-import ru.max.botapi.model.LinkButton;
-import ru.max.botapi.model.LinkedMessage;
-import ru.max.botapi.model.LocationAttachment;
-import ru.max.botapi.model.LocationAttachmentRequest;
-import ru.max.botapi.model.Message;
-import ru.max.botapi.model.MessageLinkType;
-import ru.max.botapi.model.NewMessageBody;
-import ru.max.botapi.model.NewMessageLink;
-import ru.max.botapi.model.PhotoAttachment;
-import ru.max.botapi.model.PhotoAttachmentRequest;
-import ru.max.botapi.model.PhotoAttachmentRequestPayload;
-import ru.max.botapi.model.PhotoTokens;
-import ru.max.botapi.model.ReplyButton;
-import ru.max.botapi.model.ReplyKeyboardAttachment;
-import ru.max.botapi.model.ReplyKeyboardAttachmentRequest;
-import ru.max.botapi.model.RequestContactButton;
-import ru.max.botapi.model.RequestGeoLocationButton;
-import ru.max.botapi.model.SendContactButton;
-import ru.max.botapi.model.SendGeoLocationButton;
-import ru.max.botapi.model.SendMessageButton;
-import ru.max.botapi.model.SendMessageResult;
-import ru.max.botapi.model.ShareAttachment;
-import ru.max.botapi.model.ShareAttachmentRequest;
-import ru.max.botapi.model.StickerAttachment;
-import ru.max.botapi.model.StickerAttachmentRequest;
-import ru.max.botapi.model.UploadType;
-import ru.max.botapi.model.User;
-import ru.max.botapi.model.UserIdsList;
-import ru.max.botapi.model.VideoAttachment;
-import ru.max.botapi.model.VideoAttachmentRequest;
+import ru.max.botapi.model.*;
 import ru.max.botapi.queries.AddMembersQuery;
 import ru.max.botapi.queries.GetChatQuery;
 import ru.max.botapi.queries.GetChatsQuery;
@@ -552,6 +504,11 @@ public abstract class MaxIntegrationTest {
                 assertThat(model.getChatDescription(), is(cb.getChatDescription()));
                 assertThat(model.getChatTitle(), is(cb.getChatTitle()));
                 assertThat(model.getStartPayload(), is(cb.getStartPayload()));
+            }
+
+            @Override
+            public void visit(MessageButton model) {
+                assertThat(model, is(expectedButton));
             }
 
             @Override

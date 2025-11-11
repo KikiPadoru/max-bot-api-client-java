@@ -51,12 +51,14 @@ public class Button implements MaxSerializable {
     public static final String REQUEST_GEO_LOCATION = "request_geo_location";
     public static final String REQUEST_CONTACT = "request_contact";
     public static final String CHAT = "chat";
+    public static final String MESSAGE = "message";
     public static final Set<String> TYPES = new HashSet<>(Arrays.asList(
         CALLBACK, 
         LINK, 
         REQUEST_GEO_LOCATION, 
         REQUEST_CONTACT, 
-        CHAT
+        CHAT,
+        MESSAGE // добавил новый тип кнопки
     ));
 
     @NotNull
@@ -125,6 +127,7 @@ public class Button implements MaxSerializable {
         void visit(RequestGeoLocationButton model);
         void visit(RequestContactButton model);
         void visit(ChatButton model);
+        void visit(MessageButton model);
         void visitDefault(Button model);
     }
 
@@ -134,6 +137,7 @@ public class Button implements MaxSerializable {
         T map(RequestGeoLocationButton model);
         T map(RequestContactButton model);
         T map(ChatButton model);
+        T map(MessageButton model);
         T mapDefault(Button model);
     }
 }
